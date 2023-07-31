@@ -27,3 +27,5 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(find_in_vector)
+add_subdirectory(regex_samples)
+add_subdirectory(scale_i16)
