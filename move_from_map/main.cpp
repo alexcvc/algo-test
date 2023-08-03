@@ -54,7 +54,7 @@
     | MMSd_authentication_failure \
     | MMSd_authentication_mech_nr )
 
-std::string&& to_string_mms_error(int error) {
+std::string to_string_mms_error(long error) {
   static std::unordered_map<int, std::string> errorMap{
      {MMSd_noHandlerErrors, "no errors"},
      {MMSd_emitOverflow, "pdu overflow"},
@@ -92,13 +92,11 @@ std::string&& to_string_mms_error(int error) {
   };
   static std::string err_msg;
   if (auto it = errorMap.find(error); it != errorMap.end()) {
-    return std::move(it->second);
+    return it->second;
   } else {
-    err_msg = fmt::format("unknown error={:#08x}", (uint)error);
-    return std::move(err_msg);
+    return fmt::format("unknown error={} [{:#0x}]", error, error);
   }
 }
-
 
 int main() {
 
@@ -137,6 +135,8 @@ int main() {
   std::cout << to_string_mms_error(MMSd_uninitiatedMessage                ) << std::endl;
   std::cout << to_string_mms_error(MMSd_anyError                          ) << std::endl;
   std::cout << to_string_mms_error(MMSd_GLOBAL_ERROR                      ) << std::endl;
+  std::cout << to_string_mms_error(-65 ) << std::endl;
+  std::cout << to_string_mms_error(111111111111111111 ) << std::endl;
 
 
   return 0;
