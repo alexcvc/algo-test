@@ -1,4 +1,4 @@
-# Diffrent Test and Samples
+# Different tests and samples
 
-Various test of alghorithms and function in C/C++
-You are able to find here various examples for regexp and string,  byte string parser and tokenization.
+Various tests of algorithms and functions in C/C++.
+You can find various examples here for regular expressions and strings, byte string parsers and tokenisation.
